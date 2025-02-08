@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="col-md-8 m-auto">
+    <h2 class="text-center">Update Customer</h2>
+    <form [formGroup]="updateForm">
+
+      <!-- <div class="form-group">
+        <label for="eid">Customer ID</label>
+        <input type="text" class="form-control"  formControlName="CustomerId" 
+          placeholder="Customer ID" readonly>
+        <div *ngIf="f.CustomerId.invalid && (f.CustomerId.dirty || f.CustomerId.touched)" class="alert alert-danger">
+          <div *ngIf="f.CustomerId.errors.required">
+            ID is required.
+          </div>
+          <div *ngIf="f.CustomerId.errors.pattern">
+            Invalid ID.
+          </div>
+          <div *ngIf="f.CustomerId.errors.maxlength">
+            Not more than 2 chars.
+          </div>
+        </div>
+      </div> -->
+
+
+      <div class="form-group">
+        <label for="eid">Customer Number</label>
+
+        
+        <input type="text" class="form-control" formControlName="CustomerNumber">
+        <div *ngIf="f.CustomerNumber.invalid && (f.CustomerNumber.dirty || f.CustomerNumber.touched)" class="alert alert-danger">
+          <div *ngIf="f.CustomerNumber.errors.required">
+            ID is required.
+          </div>
+          <div *ngIf="f.CustomerNumber.errors.pattern">
+            Invalid ID.
+          </div>
+          <div *ngIf="f.CustomerNumber.errors.maxlength">
+            Not more than 2 chars.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="name">Customer Name</label>
+        <input type="text" class="form-control" formControlName="CustomerName"
+          name="CustomerName" placeholder="Customer Name" [ngClass]="{ 'has-error': submitted && f.CustomerName.errors }">
+        <div *ngIf="f.CustomerName.invalid && (f.CustomerName.dirty || f.CustomerName.touched)" class="alert alert-danger">
+          <div *ngIf="f.CustomerName.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="f.CustomerName.errors.pattern">
+            Invalid Name.
+          </div>
+          <div *ngIf="f.CustomerName.errors.minlength">
+            Minimum 4 chars required.
+          </div>
+        </div>
+      </div>
+
+      
+   
+      <div class="form-group">
+        <label for="dob">DateOfBirth</label>
+        <input type="date" [max]="minDate" class="form-control" formControlName="DateOfBirth">
+        <div *ngIf="f.DateOfBirth.invalid && (f.DateOfBirth.dirty || f.DateOfBirth.touched)" class="alert alert-danger">
+          <div *ngIf="f.DateOfBirth.errors.required">
+            DOB is required.
+          </div>
+          <div *ngIf="f.DateOfBirth.errors.pattern">
+            Invalid Charactors.
+          </div>
+        </div>
+      </div>
+
+
+   
+      <div class="form-group">
+        <label for="exp">Gender</label>
+        <input class="form-control" formControlName="Gender" name="Gender">
+                   
+        
+        <div *ngIf="f.Gender.invalid && (f.Gender.dirty || f.Gender.touched)"
+          class="alert alert-danger">
+          <div *ngIf="f.Gender.errors.required">
+            Gender is required.
+          </div>
+        </div>
+      </div> 
+
+      <input type="hidden" class="form-control" formControlName="CustomerId" name="CustomerId">
+      
+      <div class="mb-4 mt-0">
+        <button [disabled]="updateForm.invalid" (click)="updateCustomer()"
+          class="btn mt-4 btn-outline-success btn-sm">Update</button>
+        <button class="btn btn-outline-warning btn-sm mt-4 ml-2" (click)="back()">Go Back</button>
+      </div>
+    </form>
+  </div>
+</div>

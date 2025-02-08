@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="col-md-12 m-auto">
+    <form [formGroup]="addForm">
+      <div class="form-group">
+        <label for="eid">Customer Number</label>
+        <input type="text" id="eid" class="form-control" [(ngModel)]="data.CustomerNumber" formControlName="CustomerNumber" 
+        (blur)="onBlurMethod(this)" name="CustomerNumber"
+          placeholder="Customer Number">
+
+        <label *ngIf="IsCustomerNumberAlreadyExist == true" style="color: red;">Customer Number already exist.</label>
+
+
+        <div *ngIf="f.CustomerNumber.invalid && (f.CustomerNumber.dirty || f.CustomerNumber.touched)" class="alert alert-danger">
+          <div *ngIf="f.CustomerNumber.errors.required">
+            Customer Number is required.
+          </div>
+          <div *ngIf="f.id.errors.pattern">
+            Invalid Customer Number.
+          </div>
+          <div *ngIf="f.id.errors.maxlength">
+            Not more than 2 chars.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Customer Name</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="data.CustomerName" formControlName="CustomerName"
+          name="CustomerName" placeholder="Customer Name" [ngClass]="{ 'has-error': submitted && f.CustomerName.errors }">
+        <div *ngIf="f.CustomerName.invalid && (f.CustomerName.dirty || f.CustomerName.touched)" class="alert alert-danger">
+          <div *ngIf="f.CustomerName.errors.required">
+            Customer Name is required.
+          </div>
+          <div *ngIf="f.CustomerName.errors.pattern">
+            Invalid Customer.
+          </div>
+          <div *ngIf="f.CustomerName.errors.minlength">
+            Minimum 4 chars required.
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="dob">Customer DOB</label>
+        <input type="date" [max]="minDate" id="dob" class="form-control" [(ngModel)]="data.DateOfBirth"
+          formControlName="DateOfBirth" name="DateOfBirth" placeholder="Date Of Birth">
+        <div *ngIf="f.DateOfBirth.invalid && (f.DateOfBirth.dirty || f.DateOfBirth.touched)" class="alert alert-danger">
+          <div *ngIf="f.DateOfBirth.errors.required">
+            DOB is required.
+          </div>
+          <div *ngIf="f.DateOfBirth.errors.pattern">
+            Invalid Charactors.
+          </div>
+        </div>
+      </div>
+    
+      
+      
+      <div class="form-group">
+        <label for="exp">Gender</label>
+        <select class="form-control" id="exp" [(ngModel)]="data.Gender" formControlName="Gender"
+          name="Gender">
+          <option>Male</option>
+          <option>Femal</option>
+        </select>
+        <div *ngIf="f.Gender.invalid && (f.Gender.dirty || f.Gender.touched)"
+          class="alert alert-danger">
+          <div *ngIf="f.Gender.errors.required">
+            Gender is required.
+          </div>
+        </div>
+      </div>
+      
+      <button (click)="addCustomer('success', 'successfully added.')"
+        class="btn mt-4 btn-outline-success btn-sm">Save</button>
+      <button class="btn btn-outline-danger btn-sm mt-4 ml-2" data-dismiss="modal">Close</button>
+    </form>
+  </div>
+</div>
+<notifier-container></notifier-container>
+  

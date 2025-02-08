@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row border">
+    <div class="container bg-info">
+      <div class="row">
+        <div class="col-md-3 md-3-padd">Customer Number</div>
+        <div class="col-md-3 md-3-paddE">Name</div>
+        <div class="col-md-1 md-3-paddD">DateOfBirth</div>
+        <div class="col-md-2 md-3-paddS">Gender</div>
+      </div>
+    </div>
+    <div class="col-md-12 border" *ngFor="let customer of customers, let i = index;">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="col-md-3">{{customer.customerNumber}}</div>
+            <div class="col-md-3">{{customer.customerName}}</div>
+            <div class="col-md-2">{{customer.dateOfBirth | date}}</div>
+            <div class="col-md-2">{{customer.gender}}</div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-md-3">
+            <ul>
+              <li><strong>CustomerId:</strong> {{customer.customerId}}</li>
+              <li><strong>CustomerNumber:</strong> {{customer.customerNumber}}</li>
+              <li><strong>CustomerName:</strong> {{customer.customerName}}</li>
+              <li><strong>DateOfBirth:</strong> {{customer.dateOfBirth  | date}}</li>
+              <li><strong>Gender:</strong> {{customer.gender}}</li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <button (click)="editCustomer(customer)" class="btn btn-sm btn-outline-primary mr-2">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button (click)="deleteCustomer(customer)" class="btn btn-sm btn-outline-danger">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</div>
